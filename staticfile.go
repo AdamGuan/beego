@@ -89,6 +89,7 @@ func serverStaticRouter(ctx *context.Context) {
 		ctx.Output.Header("Content-Length", strconv.FormatInt(sch.size, 10))
 	}
 
+	ctx.Output.Header("Access-Control-Allow-Origin", "*")
 	http.ServeContent(ctx.ResponseWriter, ctx.Request, filePath, sch.modTime, sch)
 }
 

@@ -36,6 +36,7 @@ import (
 // default filter execution points
 const (
 	BeforeStatic = iota
+	AfterStatic
 	BeforeRouter
 	BeforeExec
 	AfterExec
@@ -670,6 +671,10 @@ func (p *ControllerRegister) ServeHTTP(rw http.ResponseWriter, r *http.Request) 
 	}
 
 	serverStaticRouter(context)
+
+	// filter for after static file
+	if len(p.filters[AfterStatic]) > 0 && p.execFilter(context, urlPath, AfterStatic) {
+	}
 
 	if context.ResponseWriter.Started {
 		findRouter = true

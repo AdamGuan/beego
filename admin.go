@@ -130,6 +130,7 @@ func listConf(rw http.ResponseWriter, r *http.Request) {
 			var filterType string
 			for k, fr := range map[int]string{
 				BeforeStatic: "Before Static",
+				AfterStatic:  "After Static",
 				BeforeRouter: "Before Router",
 				BeforeExec:   "Before Exec",
 				AfterExec:    "After Exec",
