@@ -89,7 +89,8 @@ func serverStaticRouter(ctx *context.Context) {
 		ctx.Output.Header("Content-Length", strconv.FormatInt(sch.size, 10))
 	}
 
-	http.ServeContent(ctx.ResponseWriter, ctx.Request, filePath, sch.modTime, sch)
+	//	http.ServeContent(ctx.ResponseWriter, ctx.Request, filePath, sch.modTime, sch)
+	http.ServeFile(ctx.ResponseWriter, ctx.Request, filePath)
 }
 
 type serveContentHolder struct {
